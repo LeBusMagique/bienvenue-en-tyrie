@@ -16,3 +16,53 @@ collections:
       - {label: "Auteur", name: "author", widget: "string"}
       - {label: "Twitter Card", name: "image", widget: "image"}
       - {label: "Texte", name: "body", widget: "markdown"}
+  - name: "Nodes"
+    label: "Nodes"
+    folder: "_nodes"
+    create: true
+    fields:
+      - {label: "Label", name: "label", widget: "string"}
+      - label: "Color"
+        name: "color"
+        widget: "select"
+        default: "#bdc3c7"
+        options:
+          - { label: "Turquoise", value: "#1abc9c" }
+          - { label: "Emerald", value: "#2ecc71" }
+          - { label: "Peter river", value: "#3498db" }
+          - { label: "Amethyst", value: "#9b59b6" }
+          - { label: "Wet asphalt", value: "#34495e" }
+          - { label: "Sun flower", value: "#f1c40f" }
+          - { label: "Carrot", value: "#e67e22" }
+          - { label: "Alizarin", value: "#e74c3c" }
+          - { label: "Cloud", value: "#ecf0f1" }
+          - { label: "Amethyst", value: "#9b59b6" }
+          - { label: "Silver", value: "#bdc3c7" }
+          - { label: "Asbestos", value: "#7f8c8d" }
+  - name: "Edges"
+    label: "Edges"
+    folder: "_edges"
+    create: true
+    fields:
+      - label: "From"
+        name: "from"
+        widget: relation
+        collection: "Nodes"
+        searchFields: ["label"]
+        valueField: "label"
+        displayFields: ["label"]
+      - label: "To"
+        name: "to"
+        widget: relation
+        collection: "Nodes"
+        searchFields: ["label"]
+        valueField: "label"
+        displayFields: ["label"]
+      - label: "Label"
+        name: "label"
+        widget: "string"
+        required: false
+      - label: "Arrow"
+        name: "arrow"
+        widget: boolean
+        required: false
