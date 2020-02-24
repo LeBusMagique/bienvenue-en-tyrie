@@ -1,5 +1,6 @@
 ---
-title: Épisode 1 - Chronologie du lore
+title: Épisode 1
+subtitle: Chronologie du lore
 date: 26/02/2020
 duration: '01:25:35'
 resume: Résumé
