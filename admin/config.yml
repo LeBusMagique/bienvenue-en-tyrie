@@ -21,7 +21,7 @@ collections:
     folder: "_nodes"
     create: true
     fields:
-      - {label: "Label", name: "label", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
       - label: "Color"
         name: "color"
         widget: "select"
@@ -43,23 +43,24 @@ collections:
     label: "Edges"
     folder: "_edges"
     create: true
+    identifier_field: from
     fields:
       - label: "From"
         name: "from"
         widget: relation
         collection: "Nodes"
-        searchFields: ["label"]
-        valueField: "label"
-        displayFields: ["label"]
+        searchFields: ["title"]
+        valueField: "title"
+        displayFields: ["title"]
       - label: "To"
         name: "to"
         widget: relation
         collection: "Nodes"
-        searchFields: ["label"]
-        valueField: "label"
-        displayFields: ["label"]
-      - label: "Label"
-        name: "label"
+        searchFields: ["title"]
+        valueField: "title"
+        displayFields: ["title"]
+      - label: "Title"
+        name: "title"
         widget: "string"
         required: false
       - label: "Arrow"
