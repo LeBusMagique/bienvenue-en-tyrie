@@ -28,6 +28,9 @@ collections:
           - { label: "Amethyst", value: "#9b59b6" }
           - { label: "Silver", value: "#bdc3c7" }
           - { label: "Asbestos", value: "#7f8c8d" }
+      - label: Description
+        name: description
+        widget: markdown
   - name: "Edges"
     label: "Edges"
     folder: "_edges"

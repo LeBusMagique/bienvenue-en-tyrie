@@ -51,6 +51,11 @@ defaults:
       layout: "podcast"
   - scope:
       path: ""
+      type: "nodes"
+    values:
+      layout: "node"
+  - scope:
+      path: ""
     values:
       layout: "default"
 

@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Test relations</title>
-    <<meta name="charset" content="UTF-8">
+    <meta name="charset" content="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
 
@@ -41,26 +41,11 @@
 
 
 <script type="text/javascript">
-    // create an array with nodes
-    var nodes = new vis.DataSet([
+    var nodes = new vis.DataSet([{% for node in site.nodes %}{id: '{{node.slug}}', label: '{{node.title}}', color: '{{node.color}}'},{% endfor %}]);
+    var edges = new vis.DataSet([{% for edge in site.edges %}{from: '{{ edge.from | slugify }}', to: '{{ edge.to | slugify }}', label: '{{edge.label}}', {% if edge.arrow %}arrows: {to: '{{edge.to | slugify}}'}, {% endif %}font: {align: 'middle'}},{% endfor %}]);
 
-    {% for node in site.nodes %}
-      {id: '{{node.slug}}', label: '{{node.title}}', color: '{{node.color}}'},
-    {% endfor %}
-    ]);
-
-    // create an array with edges
-    var edges = new vis.DataSet([
-
-    {% for edge in site.edges %}
-      {from: '{{ edge.from | slugify }}', to: '{{ edge.to | slugify }}', label: '{{edge.label}}', {% if edge.arrow %}arrows: {to: '{{edge.to | slugify}}'}, {% endif %}font: {align: 'middle'}},
-    {% endfor %}
-    ]);
-
-    // create a network
     var container = document.getElementById('mynetwork');
 
-    // provide the data in the vis format
     var data = {
         nodes: nodes,
         edges: edges
@@ -72,14 +57,14 @@
       }
     };
 
-    // initialize your network!
     var network = new vis.Network(container, data, options);
 
     network.on('click', function(d) {
       if(typeof(d.nodes[0]) !== 'undefined') {
-        $('#mydata').html(`Node ${d.nodes[0]} sélectionné !`);
+        $.get(`/nodes/${d.nodes[0]}`, function(data) {
+          $('#mydata').html(data);
+        });
       }
-
     });
 </script>
 </body>
