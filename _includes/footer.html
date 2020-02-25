@@ -1,0 +1,102 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-5">
+          <h3 class="footer-heading mb-4">{{ site.title }}</h3>
+          <p>{{ site.description }}</p>
+        </div>
+
+
+      </div>
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="mb-5">
+          <h3 class="footer-heading mb-4">Podcasts récents</h3>
+          <div class="block-25">
+            <ul class="list-unstyled">
+
+              {% assign podcasts = (site.podcasts | sort: 'date') | reverse %}
+              {% for podcast in podcasts limit:2 %}
+                <li class="mb-3">
+                  <a href="{{ podcast.url }}" class="d-flex">
+                    <figure class="image mr-4">
+                      <img src="{{ podcast.thumbnail }}" alt="{{ podcast.title }}" class="img-fluid">
+                    </figure>
+                    <div class="text">
+                      <h3 class="heading font-weight-light">{{ podcast.title }}</h3>
+                      <h4 class="heading font-weight-light">{{ podcast.subtitle }}</h4>
+                    </div>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="mb-5">
+          <h3 class="footer-heading mb-2">Newsletter</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit minima minus odio.</p>
+
+          <form action="#" method="post">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Adresse e-mail" aria-label="Enter Email" aria-describedby="button-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button" id="button-addon2">Ok</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="row pt-5 mt-5 text-center">
+      <div class="col-md-12">
+        <p>
+        {{ site.title }} &copy; <script>document.write(new Date().getFullYear());</script> - Tous droits réservés.<br />Fait avec <i class="fas fa-heart"></i> par <a href="https://anthony-destenay.fr" target="_blank">Thoanny</a> avec <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> &nbsp;&nbsp; <i class="fas fa-palette"></i> Design par <a href="https://colorlib.com" target="_blank" >Colorlib</a> &nbsp;&nbsp; <i class="fas fa-home"></i> Hébergé par <a href="https://github.com/thoanny/bienvenue-en-tyrie" target="_blank">Github</a> et <a href="https://www.netlify.com/" target="_blank">Netlify</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</footer>
+</div><!-- .site-wrap -->
+
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/assets/js/jquery-ui.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/owl.carousel.min.js"></script>
+<script src="/assets/js/jquery.stellar.min.js"></script>
+<script src="/assets/js/jquery.countdown.min.js"></script>
+<script src="/assets/js/jquery.magnific-popup.min.js"></script>
+<script src="/assets/js/aos.js"></script>
+<script src="/assets/js/mediaelement-and-player.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
+
+    for (var i = 0; i < total; i++) {
+      new MediaElementPlayer(mediaElements[i], {
+        pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+        shimScriptAccess: 'always',
+        success: function () {
+          var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
+          for (var j = 0; j < targetTotal; j++) {
+            target[j].style.visibility = 'visible';
+          }
+        }
+      });
+    }
+  });
+</script>
+
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

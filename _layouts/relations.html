@@ -1,0 +1,86 @@
+<html>
+<head>
+    <title>Test relations</title>
+    <<meta name="charset" content="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .wrap {
+            display: flex;
+        }
+        #mynetwork, #mydata {
+            width: 50vw;
+            height: 100vh;
+            border-right: 1px solid lightgrey;
+        }
+        #mydata {
+          border: 0;
+          width: calc(50vw - 1px);
+          padding: 2em;
+          box-sizing: border-box;
+        }
+
+        #mynetwork > div {
+          outline: none;
+        }
+    </style>
+</head>
+<body>
+  <div class="wrap">
+    <div id="mynetwork"></div>
+    <div id="mydata">
+      <h1>Bienvenue en Tyrie&nbsp;!</h1>
+      <p>Cliquez sur un point pour découvrir plus de détails sur ce dernier.</p>
+    </div>
+  </div>
+
+
+<script type="text/javascript">
+    // create an array with nodes
+    var nodes = new vis.DataSet([
+
+    {% for node in site.nodes %}
+      {id: '{{node.slug}}', label: '{{node.title}}', color: '{{node.color}}'},
+    {% endfor %}
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+
+    {% for edge in site.edges %}
+      {from: '{{ edge.from | slugify }}', to: '{{ edge.to | slugify }}', label: '{{edge.label}}', {% if edge.arrow %}arrows: {to: '{{edge.to | slugify}}'}, {% endif %}font: {align: 'middle'}},
+    {% endfor %}
+    ]);
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {
+      nodes: {
+        shape: 'dot',
+        color: '#bdc3c7'
+      }
+    };
+
+    // initialize your network!
+    var network = new vis.Network(container, data, options);
+
+    network.on('click', function(d) {
+      if(typeof(d.nodes[0]) !== 'undefined') {
+        $('#mydata').html(`Node ${d.nodes[0]} sélectionné !`);
+      }
+
+    });
+</script>
+</body>
+</html>

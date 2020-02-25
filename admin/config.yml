@@ -67,3 +67,40 @@ collections:
         name: "arrow"
         widget: boolean
         required: false
+  - name: "Podcasts"
+    label: "Podcasts"
+    label_single: "Podcast"
+    folder: "_podcasts"
+    create: true
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: string
+        hint: "Épisode N"
+      - label: "Subtitle"
+        name: "subtitle"
+        widget: string
+      - label: "Date"
+        name: "date"
+        default: ""
+        widget: date
+        format: 'DD/MM/YYYY'
+      - label: "Duration"
+        name: "duration"
+        widget: string
+        hint: "HH:mm:ii"
+      - label: "Resume"
+        name: "resume"
+        widget: text
+      - label: "Description"
+        name: "description"
+        widget: markdown
+      - label: "MP3"
+        name: "mp3"
+        widget: file
+        allow_multiple: false
+      - label: "Thumbnail"
+        name: "thumbnail"
+        widget: image
+        allow_multiple: false
+        hint: "1900x1260"

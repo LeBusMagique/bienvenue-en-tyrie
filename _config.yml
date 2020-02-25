@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
+title: Bienvenue en Tyrie
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
@@ -34,9 +34,25 @@ theme: minima
 plugins:
   - jekyll-feed
 collections:
-  - nodes
-  - edges
-  - users
+  nodes:
+    output: true
+  edges:
+    output: true
+  users:
+    output: true
+  podcasts:
+    output: true
+    permalink: '/:collection/:name'
+defaults:
+  - scope:
+      path: ""
+      type: "podcasts"
+    values:
+      layout: "podcast"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
